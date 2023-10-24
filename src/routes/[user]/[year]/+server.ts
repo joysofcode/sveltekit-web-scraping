@@ -42,7 +42,7 @@ function parseContributions(html: string) {
 				const contribution = {
 					count: data[0] === 'No' ? 0 : +data[0],
 					month: data[3],
-					day: +data[4].replace(',', ''),
+					day: data[4].replace('.', ''),
 					level: +day.dataset.level!,
 				}
 				currentRow.push(contribution)
