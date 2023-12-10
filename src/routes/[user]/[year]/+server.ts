@@ -2,6 +2,13 @@ import { json } from '@sveltejs/kit'
 import { parseHTML } from 'linkedom'
 import type { RouteParams } from './$types.js'
 
+type Contribution = {
+	count: number
+	month: string
+	day: number
+	level: number
+} | null
+
 export async function GET({ params, setHeaders }) {
 	setHeaders({
 		'Acces-Control-Allow-Origin': '*',
@@ -28,7 +35,7 @@ function parseContributions(html: string) {
 
 	const days = document.querySelectorAll<Element>('tool-tip')
 
-	const contributions: any[][] = [
+	const contributions: Contribution[][] = [
 		[], // Sundays
 		[], // Mondays
 		[], // Tuesdays
